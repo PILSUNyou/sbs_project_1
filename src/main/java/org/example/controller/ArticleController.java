@@ -85,7 +85,7 @@ public class ArticleController extends Controller {
         }
     }
 
-    public  void showDetail() {
+    public void showDetail() {
         String cmdBits = cmd.split(" ")[2];
         int id = Integer.parseInt(cmdBits);
 
@@ -132,7 +132,7 @@ public class ArticleController extends Controller {
         System.out.printf("%s 게시물이 수정 되었습니다.\n",id);
     }
 
-    public  void doDelete(  ) {
+    public  void doDelete() {
         String cmdBits = cmd.split(" ")[2];
         int id = Integer.parseInt(cmdBits);
 

@@ -38,7 +38,8 @@ SET regDate = NOW(),
     boardId = 2;
 
 SELECT *
-FROM article
+FROM article;
+
 CREATE TABLE articleReply(
                              id 	INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
                              regDate DATETIME NOT NULL,
@@ -64,7 +65,7 @@ SET regDate = NOW(),
     articleId = 1;
 
 SELECT *
-FROM articleReply
+FROM articleReply;
 
 CREATE TABLE `member`(
                          id 	INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -97,7 +98,7 @@ SET regDate = NOW(),
     `name` = '유저2';
 
 SELECT *
-FROM `member`
+FROM `member`l;
 
 CREATE TABLE board(
                       id 	INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -120,4 +121,4 @@ SET regDate = NOW(),
     `name` = '자유';
 
 SELECT *
-FROM board
+FROM board;
