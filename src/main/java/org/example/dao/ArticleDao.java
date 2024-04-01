@@ -1,16 +1,21 @@
 package org.example.dao;
 
 import org.example.container.Container;
+import org.example.db.DBConnection;
 import org.example.dto.Article;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class ArticleDao extends Dao{
-    public List<Article> articles;
+    private List<Article> articles;
+
+    private DBConnection dbConnection;
 
     public  ArticleDao() {
         articles = new ArrayList<>();
+        dbConnection = Container.getDBConnection();
     }
 
     public void add(Article article) {
@@ -19,6 +24,16 @@ public class ArticleDao extends Dao{
     }
 
     public List<Article> getArticles() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(String.format("SELECT * FROM article"));
+
+        List<Article> articles = new ArrayList<>();
+        List<Map<String, Object>> rows = dbConnection.selectRows(sb.toString());
+
+        for ( Map<String, Object> row : rows ){
+            articles.add(new Article((row)));
+        }
         return articles;
     }
 

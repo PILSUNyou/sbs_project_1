@@ -27,9 +27,10 @@ public class App {
         MemberController memberController = new MemberController(sc);
         Controller articleController = new ArticleController(sc);
         ExportController exportController = new ExportController(sc);
+
         // 테스트 데이터 실행 및 회원 생성
-        articleController.makeTestData();
-        memberController.makeTestData();
+//        articleController.makeTestData();
+//        memberController.makeTestData();
 
         // 게시물 프로그램 실행
         while (true) {
