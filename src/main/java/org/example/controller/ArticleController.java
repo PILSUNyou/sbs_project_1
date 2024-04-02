@@ -133,7 +133,7 @@ public class ArticleController extends Controller {
         String cmdBits = cmd.split(" ")[2];
         int id = Integer.parseInt(cmdBits);
 
-        Article foundArticle = articleService.getAritcleById(id);
+        Article foundArticle = articleService.getAritcle(id);
 
         if (foundArticle == null) {
             System.out.printf("%s번 게시물은 존재하지 않습니다.\n", id);
@@ -151,16 +151,16 @@ public class ArticleController extends Controller {
         System.out.printf("내용 : ");
         String body = sc.nextLine();
 
-        foundArticle.title = title;
-        foundArticle.body = body;
-        System.out.printf("%s 게시물이 수정 되었습니다.\n",id);
+        articleService.modify(foundArticle.id, title, body);
+
+        System.out.printf("%s 게시물이 수정 되었습니다.\n",foundArticle.id);
     }
 
     public  void doDelete() {
         String cmdBits = cmd.split(" ")[2];
         int id = Integer.parseInt(cmdBits);
 
-        Article foundArticle = articleService.getAritcleById(id);
+        Article foundArticle = articleService.getAritcle(id);
 
         if (foundArticle == null){
             System.out.printf("%s번 게시물은 존재하지 않습니다.\n", id);

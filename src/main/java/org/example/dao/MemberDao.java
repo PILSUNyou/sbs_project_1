@@ -26,7 +26,7 @@ public class MemberDao extends Dao {
         sb.append(String.format("updateDate = NOW(), "));
         sb.append(String.format("loginId = '%s', ", member.loginId));
         sb.append(String.format("loginPw = '%s', ", member.loginPw));
-        sb.append(String.format("name = '%s', ", member.name));
+        sb.append(String.format("name = '%s' ", member.name));
 
         return dbConnection.insert(sb.toString());
     }
