@@ -52,19 +52,16 @@ public class ArticleController extends Controller {
         }
     }
     public void doWrite() {
-        int id = articleService.getNewId();
-        String regDate = Util.getNowDateStr();
         System.out.print("제목 : ");
         String title = sc.nextLine();
         System.out.print("내용 : ");
         String body = sc.nextLine();
 
-        Member loginedMember = sesstion.getLoginedMember();
-        int boardId = 1;
+        int memberId = sesstion.getLoginedMember().getId();
+        int boardId = sesstion.getCurrentBoard().getId();
 
-        Article article = new Article(id, regDate, loginedMember.id, boardId ,title, body);
-        articleService.write(article);
-        System.out.printf("%d번 글이 생성되었습니다.\n", id);
+        int newId = articleService.write(memberId, boardId ,title, body);
+        System.out.printf("%d번 글이 생성되었습니다.\n", newId);
     }
 
     public void showList() {
@@ -79,9 +76,9 @@ public class ArticleController extends Controller {
 
         System.out.println("번호 | 작성자 | 조희 | 제목");
         for (int i = 0; i<forPrintArticles.size(); i++) {
-            Article article = forPrintArticles.get(i);
-            String writerName = memberService.getMemberNameById(article.memberId);
-            System.out.printf("%4d | %s | %4d | %s\n", article.id, writerName, article.hit, article.title);
+                Article article = forPrintArticles.get(i);
+                String writerName = memberService.getMemberNameById(article.memberId);
+                System.out.printf("%4d | %s | %4d | %s\n", article.id, writerName, article.hit, article.title);
         }
     }
 

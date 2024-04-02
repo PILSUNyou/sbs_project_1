@@ -20,4 +20,7 @@ public class MemberService {
         return memberDao.getMemberByLoginId(loginId);
     }
 
+    public String getMemberNameById(int memberId) {
+        return null;
+    }
 }
