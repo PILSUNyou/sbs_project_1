@@ -5,8 +5,6 @@ import org.example.dao.ArticleDao;
 import org.example.dto.Article;
 import org.example.dto.Board;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleService {
@@ -20,11 +18,6 @@ public class ArticleService {
     }
     public List<Article> getForPrintArticles() {
         return this.getForPrintArticles(null);
-    }
-
-
-    public void remove(Article foundArticle) {
-        articleDao.remove(foundArticle);
     }
 
     public int getNewId() {

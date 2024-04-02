@@ -20,8 +20,8 @@ public class ArticleController extends Controller {
     private ArticleService articleService;
     private MemberService memberService;
     private Sesstion sesstion;
-    public ArticleController(Scanner sc){
-        this.sc = sc;
+    public ArticleController(){
+        this.sc = Container.getScanner();
         articleService = Container.articleService;
         memberService = Container.memberService;
         sesstion = Container.getSesstion();
@@ -104,8 +104,8 @@ public class ArticleController extends Controller {
         System.out.println("번호 | 작성자 | 조희 | 제목");
         for (int i = 0; i<forPrintArticles.size(); i++) {
                 Article article = forPrintArticles.get(i);
-                String writerName = memberService.getMemberNameById(article.memberId);
-                System.out.printf("%4d | %s | %4d | %s\n", article.id, writerName, article.hit, article.title);
+                Member member= memberService.getMember(article.memberId);
+                System.out.printf("%4d | %5s | %4d | %s\n", article.id, member.name, article.hit, article.title);
         }
     }
 
@@ -120,9 +120,12 @@ public class ArticleController extends Controller {
             return;
         }
         foundArticle.increaseHit();
+
+        Member member= memberService.getMember(foundArticle.memberId);
+
         System.out.printf("번호 : %s\n", foundArticle.id);
         System.out.printf("날짜 : %s\n", foundArticle.regDate);
-        System.out.printf("작성자 : %s\n", foundArticle.memberId);
+        System.out.printf("작성자 : %s\n", member.name);
         System.out.printf("제목 : %s\n", foundArticle.title);
         System.out.printf("내용 : %s\n", foundArticle.body);
         System.out.printf("조회 : %s\n", foundArticle.hit);

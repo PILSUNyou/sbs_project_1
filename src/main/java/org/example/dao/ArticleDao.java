@@ -10,12 +10,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ArticleDao extends Dao{
-    private List<Article> articles;
-
     private DBConnection dbConnection;
 
     public  ArticleDao() {
-        articles = new ArrayList<>();
         dbConnection = Container.getDBConnection();
     }
 
@@ -80,23 +77,7 @@ public class ArticleDao extends Dao{
     }
 
     public List<Article> getForPrintArticles(String searchKeyword) {
-        Container.articleDao.getArticles();
-
-        if (searchKeyword != null && searchKeyword.length() != 0) {
-            List<Article> forListArticles = new ArrayList<>();
-
-            for (Article article : articles) {
-                if (article.title.contains(searchKeyword)) {
-                    forListArticles.add(article);
-                }
-            }
-            return forListArticles;
-        }
-        return articles;
-    }
-
-    public void remove(Article foundArticle) {
-        articles.remove(foundArticle);
+        return null;
     }
 
     public Board getBoard(int id){
