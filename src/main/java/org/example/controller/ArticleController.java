@@ -86,7 +86,7 @@ public class ArticleController extends Controller {
         String cmdBits = cmd.split(" ")[2];
         int id = Integer.parseInt(cmdBits);
 
-        Article foundArticle = articleService.getAritcleById(id);
+        Article foundArticle = articleService.getForPrintArticle(id);
 
         if (foundArticle == null) {
             System.out.printf("%s번 게시물은 존재하지 않습니다.\n", id);
