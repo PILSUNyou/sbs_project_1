@@ -55,4 +55,8 @@ public class ArticleService {
     public void modify(int id, String title, String body) {
         articleDao.modify(id, title, body);
     }
+
+    public void delete(int id) {
+       articleDao.delete(id);
+    }
 }
