@@ -40,6 +40,10 @@ public class MemberDao extends Dao {
 
         Map<String, Object> memberRow = dbConnection.selectRow((sb.toString()));
 
+        if(memberRow.isEmpty()){
+            return null;
+        }
+
         return new Member(memberRow);
     }
 }
