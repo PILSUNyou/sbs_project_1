@@ -8,10 +8,7 @@ import org.example.service.ArticleService;
 import org.example.service.MemberService;
 import org.example.util.Util;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class ArticleController extends Controller {
     private Scanner sc;
@@ -60,10 +57,20 @@ public class ArticleController extends Controller {
     }
 
     private void doChangeBoard() {
-        String[] cmdBits = cmd.split(" ");
-        int boardId = Integer.parseInt(cmdBits[2]);
+        System.out.println("1. 공지 게시판");
+        System.out.println("2. 자유 게시판");
+        System.out.print("게시판 번호를 입력하세요 :");
 
+        int boardId = 0;
+        try {
+            boardId = sc.nextInt();
+            sc.nextLine();
+        } catch ( InputMismatchException e){
+            System.out.println("잘못 입력 하였습니다.");
+            return;
+        }
         Board board = articleService.getBoard(boardId);
+
         if (board == null){
             System.out.println("해당 게시판은 존재하지 않습니다.");
         }
