@@ -21,7 +21,7 @@ public class App {
         Container.getDBConnection().connect();
 
         // 현재 게시판을 1번 게시판으로 선택
-        Container.getSesstion().setCurrentBoard(Container.articleService.getBoard(1));
+        Container.getSesstion().setCurrentBoard(Container.articleService.getBoard(2));
     }
     public void start() {
         System.out.println("== 프로그램 시작 ==");
@@ -31,9 +31,9 @@ public class App {
         System.out.println("3. 현재 게시판 확인 : article currentBoard");
         System.out.println("4. 게시판 변경 : article changeBoard");
         System.out.println("5. 게시물 리스트 : article list");
-        System.out.println("6. 게시물 상세 확인 : article detail [게시물 번호]");
+        System.out.println("6. 게시물 상세 확인 : article detail");
         System.out.println("7. 게시물 작성(로그인 후 사용가능) : article write");
-        System.out.println("8. 게시물 수정/삭제(로그인 후 사용가능) : article modify/delete [게시물 번호]");
+        System.out.println("8. 게시물 수정/삭제(로그인 후 사용가능) : article modify/delete");
 
         MemberController memberController = new MemberController();
         Controller articleController = new ArticleController();

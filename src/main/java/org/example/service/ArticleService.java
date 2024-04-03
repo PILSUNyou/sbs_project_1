@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.container.Container;
 import org.example.dao.ArticleDao;
 import org.example.dto.Article;
+import org.example.dto.ArticleReply;
 import org.example.dto.Board;
 
 import java.util.List;
@@ -13,17 +14,14 @@ public class ArticleService {
     public ArticleService(){
             articleDao = Container.articleDao;
         }
-        public List<Article> getForPrintArticles(String searchKeyword) {
-        return articleDao.getForPrintArticles(searchKeyword);
-    }
-    public List<Article> getForPrintArticles() {
-        return this.getForPrintArticles(null);
-    }
 
     public int getNewId() {
         return articleDao.getNewId();
     }
 
+    public  List<Article> getForPrintArticles(String boardCode, String searchKeyword) {
+        return articleDao.getForPrintArticles(boardCode, searchKeyword);
+    }
     public int write(int memberId, int boardId ,String title, String body) {
         Article article = new Article(memberId, boardId, title, body);
         return articleDao.write(article);
@@ -31,8 +29,8 @@ public class ArticleService {
 
     public List<Article> getArticles() {
         return articleDao. getArticles();
-    }
 
+    }
     public Board getBoard(int id){
         return articleDao.getBoard(id);
     }
@@ -51,5 +49,15 @@ public class ArticleService {
 
     public void delete(int id) {
        articleDao.delete(id);
+    }
+
+
+    // 댓글 =======================================================
+    public int replyWrite(int articleId, int memberId, String replyBody) {
+        return articleDao.replyWrite(articleId, memberId, replyBody);
+    }
+
+    public List<ArticleReply> getforPrintArticleReplies(int articleId) {
+        return articleDao.getforPrintArticleReplies(articleId);
     }
 }
